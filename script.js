@@ -8,38 +8,44 @@ const esc = (value = "") =>
     .replace(/"/g, "&quot;");
 
 const pad = (n) => String(n).padStart(2, "0");
-
 const $ = (id) => document.getElementById(id);
 
-function renderSite(site) {
+const ICONS = {
+  email: '<svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.2V17h16V7.2l-8 5.3-8-5.3zM5.3 7l6.7 4.4L18.7 7H5.3z"/></svg>',
+  phone: '<svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg>',
+  location: '<svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7zm0 4.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></svg>',
+};
+
+const tags = (items = []) => items.map((t) => `<span>${esc(t)}</span>`).join("");
+
+function renderSite(site, profile) {
   document.title = site.title;
-  $("nav-logo").innerHTML = `${esc(site.logo)}<span>.</span>`;
-  $("hero-label").textContent = site.heroLabel;
-  $("hero-title").textContent = site.heroTitle;
-  $("hero-subtitle").textContent = site.heroSubtitle;
-  $("hero-school").textContent = site.school;
-  $("hero-button").textContent = site.heroButton;
+  const name = profile.name;
+  $("nav-logo").innerHTML = `<span>${esc(name.charAt(0))}</span>${esc(name.slice(1))}.`;
   $("footer-thanks").textContent = site.footerThanks;
   $("footer-copy").textContent = site.copyright;
 }
 
 function renderProfile(p) {
-  $("about-photo").innerHTML = `<img src="${esc(p.photo)}" alt="Portrait of ${esc(p.name)}">`;
-  $("about-name").innerHTML = `${esc(p.nameZh)} <span>${esc(p.name)}</span>`;
-  $("about-role").innerHTML = `${esc(p.role)}<br><span class="zh">${esc(p.roleZh)}</span>`;
-  $("about-summary").textContent = p.summary;
+  $("hero-title").innerHTML = `Hi, I'm <span class="accent">${esc(p.name)}</span>`;
+  $("hero-role").textContent = p.role;
+  $("hero-zh").textContent = [p.nameZh, p.roleZh].filter(Boolean).join(" · ");
+  $("hero-intro").textContent = p.intro;
+  $("hero-photo").innerHTML = `<img src="${esc(p.photo)}" alt="Portrait of ${esc(p.name)} ${esc(p.nameZh)}">`;
 
-  $("about-tags").innerHTML = [
-    ...(p.skills || []).map((s) => `<span class="tag">${esc(s)}</span>`),
-    ...(p.badges || []).map((b) => `<span class="tag tag--outline">${esc(b)}</span>`),
-  ].join("");
+  const badge = $("hero-badge");
+  if (p.badge) {
+    badge.innerHTML = `<strong>${esc(p.badge.title)}</strong><span>${esc(p.badge.subtitle)}</span>`;
+  } else {
+    badge.remove();
+  }
 
-  $("about-langs").innerHTML = (p.languages || [])
-    .map((l) => `<li>${esc(l.name)} <span class="zh">${esc(l.zh)}</span></li>`)
-    .join("");
+  $("about-text").innerHTML = (p.about || []).map((para) => `<p>${esc(para)}</p>`).join("");
+  $("about-skills").innerHTML = tags(p.skills);
+  $("about-langs").innerHTML = tags(p.languages);
 }
 
-function renderEducation(list) {
+function renderEducation(list = []) {
   $("education").innerHTML = list
     .map(
       (e) => `
@@ -52,98 +58,94 @@ function renderEducation(list) {
     .join("");
 }
 
-function renderExperience(exp) {
-  const group = (label, labelZh, items) =>
-    items && items.length
-      ? `<h4 class="card__sub">${label} <span class="zh">${labelZh}</span></h4>
+function renderExperience({ current = [], previous = [] } = {}) {
+  const group = (label, zh, items) =>
+    items.length
+      ? `<h5 class="card__label">${label} <span class="zh">${zh}</span></h5>
          <ul class="list">
            ${items.map((i) => `<li>${esc(i.title)}${i.zh ? `<span class="zh">${esc(i.zh)}</span>` : ""}</li>`).join("")}
          </ul>`
       : "";
-
-  $("experience").innerHTML =
-    group("Current", "現任", exp.current) + group("Previous", "曾任", exp.previous);
+  $("experience").innerHTML = group("Current", "現任", current) + group("Previous", "曾任", previous);
 }
 
-function renderProjects(projects) {
-  $("project-list").innerHTML = projects
-    .map((p, i) => {
-      const gallery = p.gallery || [];
-      const galleryClass = gallery.length === 3 ? "gallery--3" : "gallery--4";
-      return `
-      <article class="project${i % 2 ? " project--alt" : ""}">
-        <div class="project__hero">
-          <img src="${esc(p.hero)}" alt="Rendering of ${esc(p.title)}">
-        </div>
-        <div class="container project__body">
-          <header class="project__header">
-            <span class="project__num">${pad(i + 1)}</span>
-            <div>
-              <h3 class="project__title">${esc(p.title)}</h3>
-              ${p.titleZh ? `<p class="project__zh">${esc(p.titleZh)}</p>` : ""}
-              ${p.meta ? `<p class="project__meta">${esc(p.meta)}</p>` : ""}
-            </div>
-          </header>
-          <div class="project__cols">
-            ${(p.sections || [])
-              .map((s) => `<div><h4>${esc(s.heading)}</h4><p>${esc(s.text)}</p></div>`)
-              .join("")}
-          </div>
-          <div class="gallery ${galleryClass}">
-            ${gallery.map((g) => `<img src="${esc(g.src)}" alt="${esc(g.alt)}" loading="lazy">`).join("")}
+function renderProjects(list = []) {
+  $("project-list").innerHTML = list
+    .map(
+      (p, i) => `
+      <article class="project${i % 2 ? " project--flip" : ""}">
+        <div class="project__media">
+          <img class="project__hero" src="${esc(p.hero)}" alt="${esc(p.title)} rendering" ${i ? 'loading="lazy"' : ""}>
+          <div class="project__gallery">
+            ${(p.gallery || []).map((g) => `<img src="${esc(g.src)}" alt="${esc(g.alt)}" loading="lazy">`).join("")}
           </div>
         </div>
-      </article>`;
-    })
+        <div class="project__body">
+          <span class="project__num">${pad(i + 1)}</span>
+          <h3>${esc(p.title)}</h3>
+          ${p.titleZh ? `<p class="project__zh">${esc(p.titleZh)}</p>` : ""}
+          ${p.meta ? `<p class="project__meta">${esc(p.meta)}</p>` : ""}
+          ${(p.sections || []).map((s) => `<h4>${esc(s.heading)}</h4><p>${esc(s.text)}</p>`).join("")}
+        </div>
+      </article>`
+    )
     .join("");
 }
 
-function renderCertificates(certs) {
-  $("certificate-list").innerHTML = certs
+function renderCertificates(list = []) {
+  $("certificate-list").innerHTML = list
     .map(
       (c) => `
-      <div class="container certificate__grid">
-        <div>
-          <h3 class="certificate__name">${esc(c.name)}</h3>
-          <p class="certificate__date">${esc(c.date)}</p>
+      <div class="cert">
+        <div class="cert__text">
+          <h3 class="cert__issuer">${esc(c.issuer)}</h3>
+          <p class="cert__name">${esc(c.name)}</p>
+          <p class="cert__date">${esc(c.date)}</p>
         </div>
-        <figure class="certificate__img">
-          <img src="${esc(c.image)}" alt="${esc(c.name)}" loading="lazy">
-        </figure>
+        ${c.image ? `<img class="cert__img" src="${esc(c.image)}" alt="${esc(c.issuer)} — ${esc(c.name)} certificate" loading="lazy">` : ""}
       </div>`
     )
     .join("");
 }
 
 function renderContact(c) {
-  $("contact-heading").textContent = c.heading;
-  const items = [];
-  if (c.email)
-    items.push(`<a href="mailto:${esc(c.email)}" class="contact__item"><span class="contact__label">Email</span>${esc(c.email)}</a>`);
-  if (c.phone)
-    items.push(`<a href="tel:${esc(c.phone.replace(/[^\d+]/g, ""))}" class="contact__item"><span class="contact__label">Phone</span>${esc(c.phone)}</a>`);
-  if (c.location)
-    items.push(`<div class="contact__item"><span class="contact__label">Location</span>${esc(c.location)}</div>`);
-  $("contact-list").innerHTML = items.join("");
+  const phoneHref = `tel:${esc(c.phoneLink || c.phone.replace(/\s/g, ""))}`;
+  const items = [
+    c.email && { icon: "email", label: "Email", value: c.email, href: `mailto:${esc(c.email)}` },
+    c.phone && { icon: "phone", label: "Phone", value: c.phone, href: phoneHref },
+    c.address && { icon: "location", label: "Address", value: c.address, href: "#contact" },
+  ].filter(Boolean);
+
+  $("contact-lead").textContent = c.lead;
+  $("contact-list").innerHTML = items
+    .map(
+      (i) => `
+      <a class="contact__item" href="${i.href}">
+        <span class="card__icon">${ICONS[i.icon]}</span>
+        <span><small>${i.label}</small>${esc(i.value)}</span>
+      </a>`
+    )
+    .join("");
+  $("hero-social").innerHTML = items
+    .map((i) => `<a href="${i.href}" aria-label="${i.label}">${ICONS[i.icon]}</a>`)
+    .join("");
 }
 
 fetch("data.json")
   .then((res) => {
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    if (!res.ok) throw new Error(res.status);
     return res.json();
   })
   .then((data) => {
-    renderSite(data.site);
+    renderSite(data.site, data.profile);
     renderProfile(data.profile);
-    renderEducation(data.education || []);
-    renderExperience(data.experience || {});
-    renderProjects(data.projects || []);
-    renderCertificates(data.certificates || []);
-    renderContact(data.contact || {});
-    // Re-apply #hash scrolling now that the content exists.
-    if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+    renderEducation(data.education);
+    renderExperience(data.experience);
+    renderProjects(data.projects);
+    renderCertificates(data.certificates);
+    renderContact(data.contact);
   })
   .catch((err) => {
-    console.error(err);
-    document.getElementById("load-error").hidden = false;
+    console.error("Could not load data.json", err);
+    $("load-error").hidden = false;
   });

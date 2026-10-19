@@ -1,30 +1,24 @@
 {
   "site": {
-    "title": "Qinyi — Architecture Portfolio",
-    "logo": "QINYI",
-    "heroLabel": "QINYI",
-    "heroTitle": "PORTFOLIO",
-    "heroSubtitle": "Architecture Student",
-    "school": "NTUST · National Taiwan University of Science and Technology",
-    "heroButton": "View my work",
-    "footerThanks": "Thank you for taking time to view my portfolio.",
-    "copyright": "© 2026 QINYI 楊沁怡"
+    "title": "Quinn 楊沁怡 — Architecture Portfolio",
+    "footerThanks": "Thank you for taking the time to view my portfolio.",
+    "copyright": "© 2026 Quinn 楊沁怡"
   },
 
   "profile": {
     "name": "Quinn",
     "nameZh": "楊沁怡",
-    "photo": "images/profile.jpg",
-    "role": "Architecture student · 3rd year",
+    "role": "Architecture Student",
     "roleZh": "建築系 三年級",
-    "summary": "I’m an architecture student at NTUST, originally from Myanmar. I enjoy designing spaces that bring people together — from youth hostels and campus buildings to places of worship and museums — and I build my projects in Revit and visualise them with Lumion.",
+    "photo": "images/profile.jpg",
+    "intro": "Third-year architecture student at National Taiwan University of Science and Technology. I design spaces that bring people together — hostels, campus buildings, churches and museums — modelled in Revit and visualised in Lumion.",
+    "about": [
+      "I'm Quinn (楊沁怡), originally from Myanmar and now studying in the Department of Architecture at NTUST in Taipei. I enjoy designing places where people meet and feel at home — from a youth hostel shaped like two clasped hands to a church that celebrates morning light.",
+      "Outside the studio I've served as president of the Myanmar Students Association in Taiwan and now advise its new committee."
+    ],
+    "badge": { "title": "Autodesk", "subtitle": "Certified User · Revit" },
     "skills": ["Revit", "Lumion"],
-    "badges": ["Autodesk Certified User"],
-    "languages": [
-      { "name": "Chinese", "zh": "中文" },
-      { "name": "English", "zh": "英文" },
-      { "name": "Burmese", "zh": "緬文" }
-    ]
+    "languages": ["Chinese 中文", "English 英文", "Burmese 緬文"]
   },
 
   "education": [
@@ -65,11 +59,11 @@
       "sections": [
         {
           "heading": "Concept — Holding Hands",
-          "text": "Two hands clasped together: one person needs both hands to be strong, and a group is stronger still. The handshake shapes the building’s exterior. Inside, guests can rest on their own or share space with friends — a place that offers great service, a pleasant environment and the togetherness a group needs."
+          "text": "Two hands clasped together: one person needs both hands to be strong, and a group is stronger still. The handshake shapes the building's exterior. Inside, guests can rest on their own or share space with friends."
         },
         {
           "heading": "Site & Design",
-          "text": "Located on Lane 46, Zhongshan N. Rd. Sec. 2 — a 4–6 minute walk from Zhongshan and Shuanglian MRT stations, surrounded by shopping, hotels, salons and food streets with a young crowd. Curtain-wall glazing brings in ventilation and daylight, and planted terraces on every level give the building warmth."
+          "text": "A 4–6 minute walk from Zhongshan and Shuanglian MRT stations, among shops, hotels and food streets. Curtain-wall glazing brings in daylight and air, and planted terraces on every level give the building warmth."
         }
       ],
       "gallery": [
@@ -82,16 +76,16 @@
     {
       "title": "Glory Building — NTUST Digital Construction Center",
       "titleZh": "光榮大樓 台科大數位構築中心",
-      "meta": "NTUST Hsinchu Campus (~70,000 m²) · Education & research",
+      "meta": "NTUST Hsinchu Campus · Education & research",
       "hero": "images/glory-hero.jpg",
       "sections": [
         {
           "heading": "Concept — The Graduation Cap",
-          "text": "The design is inspired by a graduation cap. The glazed cylindrical core — the “crown” of the cap — is the daylit heart of the building, while the two wings on either side hold teaching and research spaces."
+          "text": "The glazed cylindrical core — the \"crown\" of a graduation cap — is the daylit heart of the building, while the two wings on either side hold teaching and research spaces."
         },
         {
           "heading": "Programme",
-          "text": "Lobby, administration, R&D studios, workshops, equipment and material storage, discussion rooms, undergraduate studios, a photography area, library and multi-purpose rooms — organised around campus pedestrian routes and plazas."
+          "text": "Lobby, administration, R&D studios, workshops, discussion rooms, undergraduate studios, a photography area, library and multi-purpose rooms, organised around campus walkways and plazas."
         }
       ],
       "gallery": [
@@ -101,18 +95,18 @@
       ]
     },
     {
-      "title": "Dawn Light Church — Religious Architecture in the City",
+      "title": "Dawn Light Church",
       "titleZh": "曦光教堂 · 都市中的宗教建築",
-      "meta": "Aiguo W. Rd. & Guangzhou St., Taipei · Christian · Modern style",
+      "meta": "Aiguo W. Rd. & Guangzhou St., Taipei · Religious architecture in the city",
       "hero": "images/church-hero.jpg",
       "sections": [
         {
           "heading": "Concept — Light",
-          "text": "The design celebrates morning light, sunlight and the everyday changes of light. When people are under pressure or walking through darkness, a church should be the first place they think of — a pure, bright place."
+          "text": "The design celebrates morning light and its everyday changes. When people are under pressure or walking through darkness, a church should be the first place they think of — a pure, bright place."
         },
         {
           "heading": "A Place of Warmth",
-          "text": "Whatever burdens you carry, coming to the church should bring a warm and happy moment, and anyone can come here to help those in need — giving them a bright home. A central courtyard ties together classrooms, an auditorium and the main sanctuary."
+          "text": "A central courtyard ties together classrooms, an auditorium and the main sanctuary, giving anyone who comes a warm and bright home."
         }
       ],
       "gallery": [
@@ -123,23 +117,23 @@
       ]
     },
     {
-      "title": "3D Interactive — Anping Fishery & Fish Exhibition Hall",
+      "title": "Anping Fishery & Fish Exhibition Hall",
       "titleZh": "3D互動 – 安平漁與魚展覽館 · 溯源地域 融合未來",
       "meta": "East side of Anping Harbour, Tainan · Museum",
       "hero": "images/fish-hero.jpg",
       "sections": [
         {
           "heading": "Concept — Water",
-          "text": "Anping Harbour cannot be separated from water — its fishery and its fish live in and on the water — so the building’s form is drawn from the shapes of waves."
+          "text": "Anping Harbour cannot be separated from water — its fishery and its fish live in and on it — so the building's form is drawn from the shapes of waves."
         },
         {
           "heading": "Façade & Light",
-          "text": "The spheres on the façade represent crystal water droplets; light filters through the gaps between them into the interior. Reflecting pools around the base make the building appear to float on water. Inside: a 3D interactive fish zone, exhibitions, an indoor water-curtain pool and a seafood restaurant."
+          "text": "Spheres on the façade represent water droplets, letting light filter inside. Reflecting pools make the building appear to float. Inside: a 3D interactive fish zone, exhibitions, a water-curtain pool and a seafood restaurant."
         }
       ],
       "gallery": [
         { "src": "images/fish-1.jpg", "alt": "Exterior view with sphere façade" },
-        { "src": "images/fish-2.jpg", "alt": "3D interactive fish zone on the second floor" },
+        { "src": "images/fish-2.jpg", "alt": "3D interactive fish zone" },
         { "src": "images/fish-3.jpg", "alt": "Indoor water-curtain pool" },
         { "src": "images/fish-4.jpg", "alt": "Ground-floor reception hall" }
       ]
@@ -148,16 +142,18 @@
 
   "certificates": [
     {
-      "name": "Autodesk Certified User — Revit® for Architecture",
+      "issuer": "Autodesk Certified User",
+      "name": "Revit® for Architecture",
       "date": "Issued June 14, 2023",
       "image": "images/certificate.jpg"
     }
   ],
 
   "contact": {
-    "heading": "Let’s build something together.",
+    "lead": "Open to internships, collaborations and studio projects. Feel free to reach out.",
     "email": "B11013016@mail.ntust.edu.tw",
     "phone": "0965 476 511",
-    "location": "No. 43, Sec. 4, Keelung Rd., Da’an Dist., Taipei"
+    "phoneLink": "+886965476511",
+    "address": "No. 43, Sec. 4, Keelung Rd., Da'an Dist., Taipei"
   }
 }

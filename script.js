@@ -108,15 +108,14 @@ function renderCertificates(list = []) {
     .join("");
 }
 
-function renderContact(c) {
-  const phoneHref = `tel:${esc(c.phoneLink || c.phone.replace(/\s/g, ""))}`;
+function renderContact(c = {}) {
   const items = [
     c.email && { icon: "email", label: "Email", value: c.email, href: `mailto:${esc(c.email)}` },
-    c.phone && { icon: "phone", label: "Phone", value: c.phone, href: phoneHref },
+    c.phone && { icon: "phone", label: "Phone", value: c.phone, href: `tel:${esc(c.phoneLink || c.phone.replace(/\s/g, ""))}` },
     c.address && { icon: "location", label: "Address", value: c.address, href: "#contact" },
   ].filter(Boolean);
 
-  $("contact-lead").textContent = c.lead;
+  $("contact-lead").textContent = c.lead || "";
   $("contact-list").innerHTML = items
     .map(
       (i) => `
@@ -131,21 +130,54 @@ function renderContact(c) {
     .join("");
 }
 
+function showError(html, err) {
+  console.error(err);
+  $("load-error").innerHTML = html;
+  $("load-error").hidden = false;
+}
+
 fetch("data.json")
   .then((res) => {
-    if (!res.ok) throw new Error(res.status);
-    return res.json();
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.text();
   })
-  .then((data) => {
-    renderSite(data.site, data.profile);
-    renderProfile(data.profile);
-    renderEducation(data.education);
-    renderExperience(data.experience);
-    renderProjects(data.projects);
-    renderCertificates(data.certificates);
-    renderContact(data.contact);
-  })
-  .catch((err) => {
-    console.error("Could not load data.json", err);
-    $("load-error").hidden = false;
-  });
+  .then(
+    (text) => {
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (err) {
+        // Usually a missing/extra comma or quote after editing data.json
+        return showError(`<code>data.json</code> has a formatting mistake: ${esc(err.message)}`, err);
+      }
+
+      // Render each section on its own so one bad section doesn't blank the rest
+      const sections = [
+        ["site", () => renderSite(data.site, data.profile)],
+        ["profile", () => renderProfile(data.profile)],
+        ["education", () => renderEducation(data.education)],
+        ["experience", () => renderExperience(data.experience)],
+        ["projects", () => renderProjects(data.projects)],
+        ["certificates", () => renderCertificates(data.certificates)],
+        ["contact", () => renderContact(data.contact)],
+      ];
+      const failed = [];
+      for (const [name, render] of sections) {
+        try {
+          render();
+        } catch (err) {
+          console.error(`Problem in the "${name}" section of data.json`, err);
+          failed.push(name);
+        }
+      }
+      if (failed.length) {
+        showError(`Check these parts of <code>data.json</code>: ${failed.map(esc).join(", ")} (see the browser console for details).`);
+      }
+    },
+    (err) =>
+      showError(
+        `Couldn't load <code>data.json</code>. Open this site through a web server
+         (or a host like GitHub Pages) rather than double-clicking index.html.`,
+        err
+      )
+  );

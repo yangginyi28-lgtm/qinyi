@@ -1,0 +1,163 @@
+{
+  "site": {
+    "title": "Qinyi — Architecture Portfolio",
+    "logo": "QINYI",
+    "heroLabel": "QINYI",
+    "heroTitle": "PORTFOLIO",
+    "heroSubtitle": "Architecture Student",
+    "school": "NTUST · National Taiwan University of Science and Technology",
+    "heroButton": "View my work",
+    "footerThanks": "Thank you for taking time to view my portfolio.",
+    "copyright": "© 2026 QINYI 楊沁怡"
+  },
+
+  "profile": {
+    "name": "Quinn Yang",
+    "nameZh": "楊沁怡",
+    "photo": "images/profile.jpg",
+    "role": "Architecture student · 3rd year",
+    "roleZh": "建築系 三年級",
+    "summary": "I’m an architecture student at NTUST, originally from Myanmar. I enjoy designing spaces that bring people together — from youth hostels and campus buildings to places of worship and museums — and I build my projects in Revit and visualise them with Lumion.",
+    "skills": ["Revit", "Lumion"],
+    "badges": ["Autodesk Certified User"],
+    "languages": [
+      { "name": "Chinese", "zh": "中文" },
+      { "name": "English", "zh": "英文" },
+      { "name": "Burmese", "zh": "緬文" }
+    ]
+  },
+
+  "education": [
+    {
+      "year": "2021 — Now",
+      "title": "National Taiwan University of Science and Technology, Department of Architecture",
+      "zh": "國立臺灣科技大學 建築系"
+    },
+    {
+      "year": "2021",
+      "title": "Completed the Overseas Chinese Autumn Preparatory Program",
+      "zh": "僑大秋季班結業"
+    },
+    {
+      "year": "2017",
+      "title": "Graduated Grade 10 (Myanmar) · Graduated Yu Cheng Junior High",
+      "zh": "緬甸十年級畢業 · 育成初中畢業"
+    }
+  ],
+
+  "experience": {
+    "current": [
+      { "title": "Advisor, 69th Myanmar Students Association in Taiwan", "zh": "69屆 留臺緬甸同學會 顧問" }
+    ],
+    "previous": [
+      { "title": "President, Myanmar Alumni Association, Class of 108, Overseas Chinese Preparatory Program", "zh": "108級僑先部緬甸同學聯誼會 會長" },
+      { "title": "President, 68th Myanmar Students Association in Taiwan", "zh": "68屆 留臺緬甸同學會 會長" },
+      { "title": "Volunteer, Lung Men Scholarship Foundation", "zh": "龍門勵學基金會 志工" }
+    ]
+  },
+
+  "projects": [
+    {
+      "title": "Zhongshan International Youth Hostel",
+      "titleZh": "中山國際青年旅舍",
+      "meta": "Zhongshan District, Taipei · Youth hostel · 6 floors + basement",
+      "hero": "images/hostel-hero.jpg",
+      "sections": [
+        {
+          "heading": "Concept — Holding Hands",
+          "text": "Two hands clasped together: one person needs both hands to be strong, and a group is stronger still. The handshake shapes the building’s exterior. Inside, guests can rest on their own or share space with friends — a place that offers great service, a pleasant environment and the togetherness a group needs."
+        },
+        {
+          "heading": "Site & Design",
+          "text": "Located on Lane 46, Zhongshan N. Rd. Sec. 2 — a 4–6 minute walk from Zhongshan and Shuanglian MRT stations, surrounded by shopping, hotels, salons and food streets with a young crowd. Curtain-wall glazing brings in ventilation and daylight, and planted terraces on every level give the building warmth."
+        }
+      ],
+      "gallery": [
+        { "src": "images/hostel-1.jpg", "alt": "Street view of the hostel" },
+        { "src": "images/hostel-2.jpg", "alt": "Aerial corner view of the hostel" },
+        { "src": "images/hostel-3.jpg", "alt": "Interior of a shared dormitory room" },
+        { "src": "images/hostel-4.jpg", "alt": "Rooftop café and terrace" }
+      ]
+    },
+    {
+      "title": "Glory Building — NTUST Digital Construction Center",
+      "titleZh": "光榮大樓 台科大數位構築中心",
+      "meta": "NTUST Hsinchu Campus (~70,000 m²) · Education & research",
+      "hero": "images/glory-hero.jpg",
+      "sections": [
+        {
+          "heading": "Concept — The Graduation Cap",
+          "text": "The design is inspired by a graduation cap. The glazed cylindrical core — the “crown” of the cap — is the daylit heart of the building, while the two wings on either side hold teaching and research spaces."
+        },
+        {
+          "heading": "Programme",
+          "text": "Lobby, administration, R&D studios, workshops, equipment and material storage, discussion rooms, undergraduate studios, a photography area, library and multi-purpose rooms — organised around campus pedestrian routes and plazas."
+        }
+      ],
+      "gallery": [
+        { "src": "images/glory-1.jpg", "alt": "Aerial site view of Glory Building" },
+        { "src": "images/glory-2.jpg", "alt": "Glazed atrium interior" },
+        { "src": "images/glory-3.jpg", "alt": "North elevation rendering" }
+      ]
+    },
+    {
+      "title": "Dawn Light Church — Religious Architecture in the City",
+      "titleZh": "曦光教堂 · 都市中的宗教建築",
+      "meta": "Aiguo W. Rd. & Guangzhou St., Taipei · Christian · Modern style",
+      "hero": "images/church-hero.jpg",
+      "sections": [
+        {
+          "heading": "Concept — Light",
+          "text": "The design celebrates morning light, sunlight and the everyday changes of light. When people are under pressure or walking through darkness, a church should be the first place they think of — a pure, bright place."
+        },
+        {
+          "heading": "A Place of Warmth",
+          "text": "Whatever burdens you carry, coming to the church should bring a warm and happy moment, and anyone can come here to help those in need — giving them a bright home. A central courtyard ties together classrooms, an auditorium and the main sanctuary."
+        }
+      ],
+      "gallery": [
+        { "src": "images/church-2.jpg", "alt": "Aerial view of the church" },
+        { "src": "images/church-1.jpg", "alt": "Sanctuary interior with cross" },
+        { "src": "images/church-3.jpg", "alt": "Central courtyard" },
+        { "src": "images/church-4.jpg", "alt": "Exterior with garden" }
+      ]
+    },
+    {
+      "title": "3D Interactive — Anping Fishery & Fish Exhibition Hall",
+      "titleZh": "3D互動 – 安平漁與魚展覽館 · 溯源地域 融合未來",
+      "meta": "East side of Anping Harbour, Tainan · Museum",
+      "hero": "images/fish-hero.jpg",
+      "sections": [
+        {
+          "heading": "Concept — Water",
+          "text": "Anping Harbour cannot be separated from water — its fishery and its fish live in and on the water — so the building’s form is drawn from the shapes of waves."
+        },
+        {
+          "heading": "Façade & Light",
+          "text": "The spheres on the façade represent crystal water droplets; light filters through the gaps between them into the interior. Reflecting pools around the base make the building appear to float on water. Inside: a 3D interactive fish zone, exhibitions, an indoor water-curtain pool and a seafood restaurant."
+        }
+      ],
+      "gallery": [
+        { "src": "images/fish-1.jpg", "alt": "Exterior view with sphere façade" },
+        { "src": "images/fish-2.jpg", "alt": "3D interactive fish zone on the second floor" },
+        { "src": "images/fish-3.jpg", "alt": "Indoor water-curtain pool" },
+        { "src": "images/fish-4.jpg", "alt": "Ground-floor reception hall" }
+      ]
+    }
+  ],
+
+  "certificates": [
+    {
+      "name": "Autodesk Certified User — Revit® for Architecture",
+      "date": "Issued June 14, 2023",
+      "image": "images/certificate.jpg"
+    }
+  ],
+
+  "contact": {
+    "heading": "Let’s build something together.",
+    "email": "B11013016@mail.ntust.edu.tw",
+    "phone": "0965 476 511",
+    "location": "No. 43, Sec. 4, Keelung Rd., Da’an Dist., Taipei"
+  }
+}

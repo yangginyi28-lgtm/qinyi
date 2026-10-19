@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio",
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "C:\\Users\\ROGZEP~1\\AppData\\Local\\Temp\\claude\\D--Users-ROG-ZEPHYRUS-Desktop-qinyi\\53527b7f-58b0-4a07-a03d-f46bc90fa69e\\scratchpad\\serve.ps1", "-Root", "D:\\Users\\ROG ZEPHYRUS\\Desktop\\qinyi", "-Port", "8080"],
+      "port": 8080
+    }
+  ]
+}

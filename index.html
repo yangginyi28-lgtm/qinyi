@@ -6,18 +6,15 @@
   <title>Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- All personal content (name, summary, experience, projects…) lives in data.json
-       and is rendered by script.js. Edit data.json to update the site. -->
+  <!-- All personal content (name, summary, projects, experience…) lives in data.json
+       and is filled in by script.js. Edit data.json to update the site. -->
 
-  <p id="load-error" class="load-error" hidden>
-    Couldn't load <code>data.json</code>. Open this site through a web server
-    (or a host like GitHub Pages) rather than double-clicking index.html.
-  </p>
+  <p id="load-error" class="load-error" hidden></p>
 
   <!-- ===== Navigation ===== -->
   <header class="nav">
@@ -29,11 +26,11 @@
 
       <nav class="nav__links">
         <a href="#home">Home</a>
+        <a href="#projects">Works</a>
         <a href="#about">About</a>
-        <a href="#projects">Portfolio</a>
-        <a href="#certificate">Certificate</a>
-        <a href="#contact">Contact</a>
-        <a href="#contact" class="btn btn--solid nav__cta">Let's Talk</a>
+        <a href="#services">Services</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact" class="btn btn--dark nav__cta">Contact</a>
       </nav>
     </div>
   </header>
@@ -42,102 +39,92 @@
     <!-- ===== Hero ===== -->
     <section class="hero" id="home">
       <div class="container hero__inner">
-        <div class="hero__text">
-          <h1 class="hero__title" id="hero-title"></h1>
-          <h2 class="hero__role" id="hero-role"></h2>
-          <p class="hero__zh" id="hero-zh"></p>
-          <p class="hero__intro" id="hero-intro"></p>
-          <div class="hero__actions">
-            <a href="#contact" class="btn btn--solid">Hire Me</a>
-            <a href="#projects" class="btn btn--outline">See Projects</a>
-          </div>
-        </div>
-
-        <div class="hero__visual">
-          <div class="hero__blob"></div>
-          <div class="hero__photo" id="hero-photo"></div>
-          <div class="hero__badge" id="hero-badge"></div>
-        </div>
-
-        <div class="hero__social" id="hero-social"></div>
+        <p class="hero__hey" id="hero-greeting"></p>
+        <div class="hero__photo" id="hero-photo"></div>
+        <p class="hero__status" id="hero-status"></p>
+        <p class="hero__spec" id="hero-spec"></p>
+        <h1 class="hero__name" id="hero-name"></h1>
+        <h2 class="hero__role" id="hero-role"></h2>
+        <p class="hero__zh" id="hero-subtitle"></p>
       </div>
     </section>
 
-    <!-- ===== About ===== -->
+    <!-- ===== Recent Projects ===== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <h2 class="section__title">Recent Projects</h2>
+        <p class="section__sub" id="projects-subtitle"></p>
+        <div class="projects" id="project-list"></div>
+      </div>
+    </section>
+
+    <!-- ===== Services ===== -->
+    <section class="section section--soft" id="services">
+      <div class="container">
+        <h2 class="section__title">I Can Help You With</h2>
+        <div class="services" id="service-list"></div>
+      </div>
+    </section>
+
+    <!-- ===== About / Vision ===== -->
     <section class="section" id="about">
       <div class="container">
-        <p class="eyebrow">About Me <span class="zh">個人資料</span></p>
-        <h2 class="section__title">Who I <span class="accent">am</span></h2>
-
-        <div class="about__grid">
-          <div>
-            <div class="about__text" id="about-text"></div>
-
-            <div class="about__facts">
-              <div class="fact">
-                <h4>Skills <span class="zh">專長</span></h4>
-                <div class="tags" id="about-skills"></div>
-              </div>
-              <div class="fact">
-                <h4>Languages <span class="zh">語言能力</span></h4>
-                <div class="tags" id="about-langs"></div>
-              </div>
-            </div>
+        <h2 class="section__title">Turning My Vision Into Spaces</h2>
+        <div class="vision">
+          <div class="vision__text">
+            <p class="vision__lead" id="about-lead"></p>
+            <div class="vision__paras" id="about-text"></div>
+            <div class="stats" id="about-stats"></div>
           </div>
-
-          <div class="cards">
-            <article class="card">
-              <div class="card__head">
-                <span class="card__icon"><svg viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-7 10.2V17l7 4 7-4v-3.8l-7 3.8-7-3.8z"/></svg></span>
-                <h3>Education <span class="zh">學歷</span></h3>
-              </div>
-              <ol class="timeline" id="education"></ol>
-            </article>
-
-            <article class="card">
-              <div class="card__head">
-                <span class="card__icon"><svg viewBox="0 0 24 24"><path d="M10 4h4a2 2 0 0 1 2 2v1h4a2 2 0 0 1 2 2v4H2V9a2 2 0 0 1 2-2h4V6a2 2 0 0 1 2-2zm0 3h4V6h-4v1zM2 15h8v1h4v-1h8v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-4z"/></svg></span>
-                <h3>Leadership <span class="zh">社團經驗</span></h3>
-              </div>
-              <div id="experience"></div>
-            </article>
-          </div>
+          <div class="vision__img" id="about-image"></div>
         </div>
       </div>
     </section>
 
-    <!-- ===== Projects ===== -->
-    <section class="section section--tint" id="projects">
+    <!-- ===== Experience & Skills ===== -->
+    <section class="section section--soft" id="experience">
       <div class="container">
-        <p class="eyebrow">Portfolio <span class="zh">設計</span></p>
-        <h2 class="section__title">Selected <span class="accent">Projects</span></h2>
-        <div id="project-list"></div>
+        <h2 class="section__title">Experience &amp; Skills</h2>
+        <div class="rows" id="experience-list"></div>
+
+        <div class="skills">
+          <div class="skill-card">
+            <h4>Software</h4>
+            <ul class="chips" id="skills-software"></ul>
+          </div>
+          <div class="skill-card">
+            <h4>Languages</h4>
+            <ul class="lang" id="skills-languages"></ul>
+          </div>
+          <div class="skill-card skill-card--cert" id="skills-certificate"></div>
+        </div>
       </div>
     </section>
 
-    <!-- ===== Certificate ===== -->
-    <section class="section" id="certificate">
+    <!-- ===== Studio gallery ===== -->
+    <section class="section" id="gallery">
       <div class="container">
-        <p class="eyebrow">Certificate <span class="zh">證照</span></p>
-        <h2 class="section__title">Certifi<span class="accent">cations</span></h2>
-        <div id="certificate-list"></div>
+        <h2 class="section__title">From My Studio</h2>
+        <div class="gallery" id="gallery-list"></div>
       </div>
     </section>
 
     <!-- ===== Contact ===== -->
-    <section class="section section--tint" id="contact">
-      <div class="container contact">
-        <p class="eyebrow">Contact <span class="zh">聯絡方式</span></p>
-        <h2 class="section__title">Let's build something <span class="accent">together</span></h2>
+    <section class="contact" id="contact">
+      <div class="container contact__inner">
+        <p class="contact__hey" id="contact-greeting"></p>
+        <h2 class="contact__title" id="contact-title"></h2>
         <p class="contact__lead" id="contact-lead"></p>
-        <div class="contact__grid" id="contact-list"></div>
+        <a class="btn btn--dark btn--lg" id="contact-email"></a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p id="footer-thanks"></p>
-    <p class="footer__copy" id="footer-copy"></p>
+    <div class="container footer__inner">
+      <span class="nav__logo" id="footer-logo"></span>
+      <p id="footer-copy"></p>
+    </div>
   </footer>
 
 </body>

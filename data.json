@@ -1,12 +1,12 @@
 {
   "site": {
-    "title": "Qinyi 楊沁怡 — Architecture Portfolio",
-    "logo": "Qinyi",
+    "title": "Quinn 楊沁怡 — Architecture Portfolio",
+    "logo": "Quinn",
     "copyright": "© 2026 Yang Qinyi 楊沁怡"
   },
 
   "profile": {
-    "name": "Qinyi",
+    "name": "Quinn",
     "greeting": "Hey, there",
     "photo": "images/profile-cutout.png",
     "photoAlt": "Portrait of Yang Qinyi (Quinn)",
@@ -183,7 +183,6 @@
   "contact": {
     "greeting": "Let's talk",
     "title": "Thank you for taking time to view my portfolio",
-    "lead": "Open to internships, collaborations and studio projects. 謝謝！",
-    "email": "yangginyi28@gmail.com"
+    "lead": "Open to internships, collaborations and studio projects. 謝謝！"
   }
 }
